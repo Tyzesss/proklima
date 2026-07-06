@@ -46,7 +46,7 @@ export const SITE_OG_IMAGE = preset.ogImage;
 export const HERO_IMAGE = preset.heroImage;
 export const HERO_IMAGE_POSITION = preset.heroImagePosition ?? "20% 42%";
 export const LOGO_URL = preset.logoUrl;
-export const FAVICON_URL = preset.faviconUrl ?? "/favicon.svg";
+export const FAVICON_URL = preset.faviconUrl ?? "/favicon.png";
 
 export const SERVICES = preset.services;
 export const GALLERY = preset.gallery;

@@ -15,9 +15,9 @@ export function SiteLogo({ className, showName = true }: SiteLogoProps) {
         <img
           src={LOGO_URL}
           alt={SITE_NAME}
-          className={cn("h-11 w-auto max-w-[12rem] object-contain object-left md:h-12 md:max-w-[14rem]", className)}
-          width={224}
-          height={48}
+          className={cn("h-12 w-auto max-w-[13rem] object-contain object-left md:h-14 md:max-w-[16rem]", className)}
+          width={256}
+          height={56}
           decoding="async"
         />
       ) : (

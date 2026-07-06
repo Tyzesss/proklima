@@ -33,7 +33,7 @@ export const jeleniaGoraPreset: SitePreset = {
   siteKeywords:
     "klimatyzacja Jelenia Góra, montaż klimatyzacji, serwis klimatyzacji, pompy ciepła Jelenia Góra, rekuperacja",
   logoUrl: `${BASE}/uploads/2020-03-13/logo-proklima1.png`,
-  faviconUrl: `${BASE}/uploads/2020-03-13/logo-proklima1.png`,
+  faviconUrl: "/favicon.png",
   heroImage: "/gallery/mieszkanie-mokotow.jpg",
   ogImage: `${BASE}/uploads/2020-02-28/img-20200227-wa0027.jpg`,
   googleRating: 4.5,
