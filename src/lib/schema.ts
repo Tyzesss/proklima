@@ -13,6 +13,7 @@ import {
   ADDRESS_CITY,
   ADDRESS_POSTAL,
   COMPANY_LEGAL_NAME,
+  OPENING_HOURS,
   siteBaseUrl,
 } from "@/lib/site";
 
@@ -38,14 +39,16 @@ export function localBusinessJsonLd() {
       "@type": "City",
       name: ADDRESS_CITY,
     },
-    openingHoursSpecification: [
+    openingHoursSpecification: (OPENING_HOURS ?? [
       {
-        "@type": "OpeningHoursSpecification",
         dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
         opens: "08:00",
         closes: "18:00",
       },
-    ],
+    ]).map((hours) => ({
+      "@type": "OpeningHoursSpecification",
+      ...hours,
+    })),
     sameAs: [MAPS_URL],
     aggregateRating: {
       "@type": "AggregateRating",

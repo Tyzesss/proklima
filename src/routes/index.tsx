@@ -16,8 +16,13 @@ import {
   Menu,
   X,
   Star,
+  Building2,
+  Refrigerator,
+  Fan,
+  Sparkles,
+  type LucideIcon,
 } from "lucide-react";
-import heroImage from "@/assets/hero.png";
+import { SiteLogo } from "@/components/SiteLogo";
 import { MobileCarousel } from "@/components/MobileCarousel";
 import { StickyCallBar } from "@/components/StickyCallBar";
 import { HowItWorks } from "@/components/HowItWorks";
@@ -42,6 +47,7 @@ import {
 import { cn } from "@/lib/utils";
 import { useReveal } from "@/hooks/use-reveal";
 
+import type { ServiceIconName } from "@/lib/presets/types";
 import {
   SITE_TITLE,
   SITE_DESCRIPTION,
@@ -57,6 +63,9 @@ import {
   NIP,
   GALLERY,
   GOOGLE_REVIEWS_URL,
+  HERO_IMAGE,
+  HERO_IMAGE_POSITION,
+  SERVICES,
 } from "@/lib/site";
 
 export const Route = createFileRoute("/")({
@@ -85,7 +94,20 @@ const NAV_LINKS = [
   { href: "#kontakt", label: "Kontakt" },
 ] as const;
 
-const services = [
+const SERVICE_ICONS: Record<ServiceIconName, LucideIcon> = {
+  Snowflake,
+  Wrench,
+  Wind,
+  Zap,
+  Home,
+  ShieldCheck,
+  Building2,
+  Refrigerator,
+  Fan,
+  Sparkles,
+};
+
+const DEFAULT_SERVICES = [
   { icon: Snowflake, title: "Montaż klimatyzacji", desc: "Profesjonalny montaż split i multi-split w domach i mieszkaniach." },
   { icon: Wrench, title: "Serwis i przeglądy", desc: "Coroczne przeglądy, czyszczenie i ozonowanie urządzeń." },
   { icon: Wind, title: "Rekuperacja", desc: "Dobór i montaż systemów wentylacji mechanicznej z odzyskiem ciepła." },
@@ -94,14 +116,20 @@ const services = [
   { icon: ShieldCheck, title: "Naprawa awaryjna", desc: "Szybka reakcja w przypadku awarii – dojazd nawet tego samego dnia." },
 ];
 
+const services = (SERVICES ?? DEFAULT_SERVICES).map((service) => ({
+  ...service,
+  icon: SERVICE_ICONS[service.icon],
+}));
+
 const SERVICE_OPTION_GROUPS = [
   {
     label: "Montaż",
     options: [
       "Klimatyzacja — dom lub mieszkanie",
       "Klimatyzacja — biuro lub lokal",
-      "Rekuperacja",
+      "Rekuperacja / wentylacja",
       "Pompa ciepła",
+      "Komora chłodnicza",
     ],
   },
   {
@@ -293,7 +321,8 @@ function GalleryCard({ g, index = 0 }: { g: (typeof gallery)[number]; index?: nu
       <img
         src={g.image}
         alt={g.alt}
-        className="h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+        className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+        style={{ objectPosition: g.objectPosition ?? "center" }}
         loading="lazy"
         decoding="async"
         width={800}
@@ -398,13 +427,10 @@ function SiteHeader() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4">
         <a
           href="#top"
-          className="flex items-center gap-2"
+          className="flex items-center gap-2.5"
           onClick={() => setMenuOpen(false)}
         >
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-accent text-white shadow-glow">
-            <Snowflake className="h-5 w-5" />
-          </div>
-          <span className="font-bold tracking-tight text-foreground">{SITE_NAME}</span>
+          <SiteLogo />
         </a>
 
         <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
@@ -471,7 +497,10 @@ function Index() {
         <div className="hero-services-bg" aria-hidden>
           <div
             className="hero-photo"
-            style={{ backgroundImage: `url(${heroImage})` }}
+            style={{
+              backgroundImage: `url(${HERO_IMAGE})`,
+              backgroundPosition: HERO_IMAGE_POSITION,
+            }}
           />
           <div className="hero-photo-scrim" />
         </div>
@@ -636,7 +665,7 @@ function Index() {
                 <p className="section-eyebrow">Kontakt</p>
                 <h2 className="mt-1.5 text-2xl font-bold tracking-tight text-white">Skontaktuj się z nami</h2>
                 <p className="mt-1.5 text-sm leading-relaxed text-white/75">
-                  Zadzwoń, napisz na e-mail lub odwiedź nas — jesteśmy czynni Pn–Sob 8:00–18:00.
+                  Zadzwoń, napisz na e-mail lub odwiedź nas — jesteśmy czynni {HOURS}.
                 </p>
               </Reveal>
 
@@ -662,7 +691,7 @@ function Index() {
                 <p className="section-eyebrow">Kontakt</p>
                 <h2 className="mt-1.5 text-4xl font-bold tracking-tight text-white">Skontaktuj się z nami</h2>
                 <p className="mt-1.5 text-base leading-relaxed text-white/75">
-                  Zadzwoń, napisz na e-mail lub odwiedź nas — jesteśmy czynni Pn–Sob 8:00–18:00.
+                  Zadzwoń, napisz na e-mail lub odwiedź nas — jesteśmy czynni {HOURS}.
                 </p>
               </Reveal>
 

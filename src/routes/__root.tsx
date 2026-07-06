@@ -15,6 +15,7 @@ import {
   SITE_DESCRIPTION,
   SITE_NAME,
   SITE_OG_IMAGE,
+  FAVICON_URL,
   absoluteUrl,
   siteBaseUrl,
   SITE_KEYWORDS,
@@ -91,7 +92,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "keywords", content: SITE_KEYWORDS },
       { name: "robots", content: "index, follow" },
       { name: "author", content: SITE_NAME },
-      { name: "theme-color", content: "oklch(0.48 0.16 240)" },
+      { name: "theme-color", content: "#008CC1" },
       { property: "og:title", content: SITE_TITLE },
       { property: "og:description", content: SITE_DESCRIPTION },
       { property: "og:type", content: "website" },
@@ -113,8 +114,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       meta,
       links: [
         { rel: "stylesheet", href: appCss },
-        { rel: "icon", href: "/favicon.svg?v=4", type: "image/svg+xml" },
-        { rel: "apple-touch-icon", href: "/favicon.svg?v=4" },
+        { rel: "icon", href: FAVICON_URL, type: FAVICON_URL.endsWith(".svg") ? "image/svg+xml" : "image/png" },
+        { rel: "apple-touch-icon", href: FAVICON_URL },
         { rel: "canonical", href: canonicalUrl },
       ],
     };

@@ -30,11 +30,12 @@ export const ADDRESS = preset.address;
 export const ADDRESS_STREET = preset.addressStreet;
 export const ADDRESS_CITY = preset.addressCity;
 export const ADDRESS_POSTAL = preset.addressPostal;
-export const HOURS = "Pn - Sob: 8:00 - 18:00";
-export const MAPS_URL = `https://maps.google.com/?q=${encodeURIComponent(preset.mapsQuery)}`;
+export const HOURS = preset.hours;
+export const OPENING_HOURS = preset.openingHours;
+export const MAPS_URL = preset.mapsUrl;
 
-export const GOOGLE_RATING = 4.9;
-export const GOOGLE_REVIEW_COUNT = 48;
+export const GOOGLE_RATING = preset.googleRating;
+export const GOOGLE_REVIEW_COUNT = preset.googleReviewCount;
 export const GOOGLE_REVIEWS_URL = preset.googleReviewsUrl ?? MAPS_URL;
 export const GOOGLE_WRITE_REVIEW_URL = preset.googleWriteReviewUrl ?? "";
 
@@ -42,7 +43,12 @@ export const SITE_TITLE = preset.siteTitle;
 export const SITE_KEYWORDS = preset.siteKeywords;
 export const SITE_DESCRIPTION = `Montaż klimatyzacji ${CITY_LOCATIVE} i okolicach. Darmowa wycena, szybki dojazd, gwarancja. Zadzwoń: ${PHONE_DISPLAY}.`;
 export const SITE_OG_IMAGE = preset.ogImage;
+export const HERO_IMAGE = preset.heroImage;
+export const HERO_IMAGE_POSITION = preset.heroImagePosition ?? "20% 42%";
+export const LOGO_URL = preset.logoUrl;
+export const FAVICON_URL = preset.faviconUrl ?? "/favicon.svg";
 
+export const SERVICES = preset.services;
 export const GALLERY = preset.gallery;
 export const REVIEWS = preset.reviews;
 
@@ -56,5 +62,8 @@ export function siteBaseUrl(): string {
 }
 
 export function absoluteUrl(path: string): string {
+  if (/^https?:\/\//i.test(path)) {
+    return path;
+  }
   return new URL(path, siteBaseUrl()).href;
 }

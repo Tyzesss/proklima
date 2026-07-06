@@ -38,7 +38,12 @@ function curatedFallback(): GoogleReviewsPayload {
     preset.googleReviewsUrl ??
     `https://maps.google.com/?q=${encodeURIComponent(preset.mapsQuery)}`;
 
-  return buildCuratedPayload(preset.reviews, profileUrl, 4.9, 48);
+  return buildCuratedPayload(
+    preset.reviews,
+    profileUrl,
+    preset.googleRating,
+    preset.googleReviewCount,
+  );
 }
 
 async function fetchLiveGoogleReviews(
