@@ -35,7 +35,6 @@ export const jeleniaGoraPreset: SitePreset = {
   logoUrl: `${BASE}/uploads/2020-03-13/logo-proklima1.png`,
   faviconUrl: `${BASE}/uploads/2020-03-13/logo-proklima1.png`,
   heroImage: "/hero.png",
-  heroImagePosition: "38% 52%",
   ogImage: "/hero.png",
   googleRating: 4.5,
   googleReviewCount: 37,
