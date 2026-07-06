@@ -22,6 +22,7 @@ import {
   Sparkles,
   type LucideIcon,
 } from "lucide-react";
+import heroImage from "@/assets/hero.png";
 import { SiteLogo } from "@/components/SiteLogo";
 import { MobileCarousel } from "@/components/MobileCarousel";
 import { StickyCallBar } from "@/components/StickyCallBar";
@@ -63,8 +64,6 @@ import {
   NIP,
   GALLERY,
   GOOGLE_REVIEWS_URL,
-  HERO_IMAGE,
-  HERO_IMAGE_POSITION,
   SERVICES,
 } from "@/lib/site";
 
@@ -497,10 +496,7 @@ function Index() {
         <div className="hero-services-bg" aria-hidden>
           <div
             className="hero-photo"
-            style={{
-              backgroundImage: `url(${HERO_IMAGE})`,
-              backgroundPosition: HERO_IMAGE_POSITION,
-            }}
+            style={{ backgroundImage: `url(${heroImage})` }}
           />
           <div className="hero-photo-scrim" />
         </div>
